@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Catering Management System</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+</head>
+<body>
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<a class="navbar-brand" href="/administration">Catering Management
+			System</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav">
+				<li class="nav-link"><a>Chef Management</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container">
+		<div class="row">
+			<h1>Elenco degli Chef</h1>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-3">
+				<a th:href="@{/administration/chefs/new}" class="btn btn-primary btn-sm mb-3">Add Chef</a>
+			</div>
+		</div>
+		<table class="table table-striped table-bordered">
+			<thead class="table-dark">
+				<tr>
+					<th>Nome</th>
+					<th>Cognome</th>
+					<th>Nazionalita</th>
+					<th>Operazione</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="chef: ${chefs}">
+					<td th:text="${chef.nome}"></td>
+					<td th:text="${chef.cognome}"></td>
+					<td th:text="${chef.nazionalita}"></td>
+					<td><a th:href="@{/administration/chefs/edit/{id}(id=${chef.id})}"
+						class="btn btn-secondary">Update</a> 
+						<a th:href="@{/administration/chefs/del/{id}(id=${chef.id})}" class="btn btn-danger">Delete</a>
+						<a th:href="@{/administration/buffets/new/{chef_id}(chef_id=${chef.id})}"
+						class="btn btn-success">Add Buffet</a>
+						<a th:href="@{/administration/buffets/chef/{chef_id}(chef_id=${chef.id})}"
+						class="btn btn-info">Guarda i Buffet</a></td>
+				</tr>
+			</tbody>
+
+		</table>
+		
+		<div class="row">
+			<div class="col-lg-3">
+				<a th:href="@{/administration}" class="btn btn-primary btn-sm mb-3">
+					Back</a>
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

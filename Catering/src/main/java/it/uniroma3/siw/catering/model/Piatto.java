@@ -65,6 +65,14 @@ public class Piatto {
 		this.descrizione = descrizione;
 	}
 
+	public Buffet getBuffet() {
+		return buffet;
+	}
+
+	public void setBuffet(Buffet buffet) {
+		this.buffet = buffet;
+	}
+
 	public List<Ingrediente> getIngredienti() {
 		return ingredienti;
 	}

@@ -1,0 +1,38 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Catering Service</title>
+<link rel="stylesheet" href="main_page.css" />
+<link rel="icon"
+	href="https://th.bing.com/th/id/OIP.EPT5ubvFjuQG60TeMX-66wHaFj?pid=ImgDet&rs=1">
+</head>
+<div class="header">
+	<div class="sides">
+		<a href="/index" class="contact">Home</a>
+	</div>
+	<div class="info">
+		<h3>
+			<a>Roma</a>
+		</h3>
+		<h1>Catering Service</h1>
+		<a class="logo"></a>
+	</div>
+</div>
+<section class="content">
+	<p align="center">I nostri Chef e le loro proposte per i buffet</p>
+	<ul>
+		<li th:each="chef : ${chefs}">
+			<p
+				th:text="${chef.nome} + ' ' + ${chef.cognome} + ', ' + ${chef.nazionalita}">Paolo
+				Rossi, Italia</p>
+			<ul>
+				<li th:each="buffet : ${chef.buffet}">
+					<div class = "buffet">
+					<a th:text="${buffet.nome}">Comunione</a>
+					</div>					
+				</li>
+			</ul>
+		</li>
+	</ul>
+</section>
+</html>

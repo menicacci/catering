@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Chef {
@@ -15,14 +16,17 @@ public class Chef {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@NotBlank
 	private String nome;
 	
+	@NotBlank
 	private String cognome;
 	
+	@NotBlank
 	private String nazionalita;
 	
 	@OneToMany(mappedBy = "chef")
-	private List<Buffet> buffet;
+	private List<Buffet> buffets;
 
 	public Long getId() {
 		return id;
@@ -57,10 +61,14 @@ public class Chef {
 	}
 
 	public List<Buffet> getBuffet() {
-		return buffet;
+		return buffets;
 	}
 
 	public void setBuffet(List<Buffet> buffet) {
-		this.buffet = buffet;
+		this.buffets = buffet;
+	}
+
+	public void addBuffet(Buffet buffet) {
+		this.getBuffet().add(buffet);		
 	}
 }
