@@ -98,6 +98,11 @@ public class CateringApplication implements CommandLineRunner {
 		p1.addIngrediente(i5);
 		p1.addIngrediente(i1);
 		
+		Piatto p2 = new Piatto();
+		p2.setNome("Gricia");
+		p2.setDescrizione("Buona");
+		p2.setBuffet(b2);
+		
 		piattR.save(p1);
 	}
 
