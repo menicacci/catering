@@ -42,6 +42,8 @@
 					<td th:text="${piatto.descrizione}"></td>
 					<td>
 						<a th:href="@{/administration/piatti/del/{id}(id=${piatto.id})}" class="btn btn-danger">Delete</a>
+						<a th:href="@{/administration/ingredienti/piatto/{piatto_id}(piatto_id=${piatto.id})}"
+						class="btn btn-info">Guarda Ingredienti</a>
 					</td>
 				</tr>
 			</tbody>

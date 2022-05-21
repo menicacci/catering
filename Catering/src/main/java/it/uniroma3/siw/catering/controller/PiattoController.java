@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import it.uniroma3.siw.catering.model.Buffet;
 import it.uniroma3.siw.catering.model.Piatto;
 import it.uniroma3.siw.catering.service.BuffetService;
+import it.uniroma3.siw.catering.service.IngredienteService;
 import it.uniroma3.siw.catering.service.PiattoService;
 
 @Controller
@@ -21,6 +22,7 @@ public class PiattoController {
 
 	@Autowired private PiattoService piattoService;
 	@Autowired private BuffetService buffetService;
+	@Autowired private IngredienteService ingredienteService;
 	
 	@GetMapping("/administration/piatti")
 	public String listPiatti(Model model) {
@@ -43,6 +45,7 @@ public class PiattoController {
 		Piatto piatto = new Piatto();
 		model.addAttribute("piatto", piatto);
 		model.addAttribute("buffet_id", buffet_id);
+		model.addAttribute("tuttiGliIngredienti", ingredienteService.findAll());
 		
 		return "/admin/piatto/create_piatto.html";
 	}

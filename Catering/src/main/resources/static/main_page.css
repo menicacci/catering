@@ -110,7 +110,14 @@ p{
 
 .buffet a {
 	font-size: 1.5em;
-	color: orange;
+}
+
+.piatto a {
+	font-size: 1.2em;
+}
+
+.ingrediente a {
+	font-size: 1em;
 }
 
 .intr{

@@ -43,6 +43,17 @@
 								th:field="*{descrizione}" class="form-control"
 								placeholder="Inserisci la descrizione" />
 						</div>
+						<div class="form-group">
+							<label>Ingredienti</label>
+							<div>
+								<select class="form-control" th:field="*{ingredienti}" multiple="multiple">
+									<option th:each="ingrediente: ${tuttiGliIngredienti}"
+											th:value="${ingrediente.id}"
+											th:text="${ingrediente.nome}"											
+									>1</option>
+								</select>
+							</div>
+						</div>
 						<div class="box-footer">
 							<button type="submit" class="btn btn-primary">Invia</button>
 						</div>

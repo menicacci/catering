@@ -12,18 +12,30 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.siw.catering.model.Ingrediente;
+import it.uniroma3.siw.catering.model.Piatto;
 import it.uniroma3.siw.catering.service.IngredienteService;
+import it.uniroma3.siw.catering.service.PiattoService;
 
 @Controller
 public class IngredienteController {
 	
 	@Autowired private IngredienteService ingredienteService;
+	@Autowired private PiattoService piattoService;
 	
 	@GetMapping("/administration/ingredienti")
 	public String listBuffets(Model model) {
 		model.addAttribute("ingredienti", ingredienteService.findAll());
 
 		return "admin/ingrediente/ingredienti.html";
+	}
+	
+	@GetMapping("/administration/ingredienti/piatto/{piatto_id}")
+	public String listIngredientiPiatto(@PathVariable Long piatto_id, Model model) {
+		Piatto piatto = piattoService.findById(piatto_id);
+		model.addAttribute("piatto", piatto);
+		model.addAttribute("ingredienti", piatto.getIngredienti());
+		
+		return "admin/ingrediente/ingredienti_per_piatto.html";
 	}
 	
 	@GetMapping("/administration/ingredienti/new")

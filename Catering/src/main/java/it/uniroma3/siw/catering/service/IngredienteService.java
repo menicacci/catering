@@ -15,10 +15,15 @@ import it.uniroma3.siw.catering.repository.IngredienteRepository;
 public class IngredienteService {
 	
 	@Autowired private IngredienteRepository ingredienteRepository;
+	@Autowired private PiattoService piattoService;
 	
 	@Transactional
 	public void save(Ingrediente ingrediente) {
 		ingredienteRepository.save(ingrediente);
+	}
+	
+	public Ingrediente findById(Long id) {
+		return this.ingredienteRepository.findById(id).get();
 	}
 	
 	public List<Ingrediente> findAll(){
@@ -30,6 +35,8 @@ public class IngredienteService {
 	}
 	
 	public void deleteIngrediente(Long id) {
+		piattoService.deletePiatti(findById(id));
 		ingredienteRepository.deleteById(id);
 	}
+	
 }

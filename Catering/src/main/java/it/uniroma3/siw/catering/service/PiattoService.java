@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import it.uniroma3.siw.catering.model.Buffet;
+import it.uniroma3.siw.catering.model.Ingrediente;
 import it.uniroma3.siw.catering.model.Piatto;
 import it.uniroma3.siw.catering.repository.PiattoRepository;
 
@@ -45,5 +46,11 @@ public class PiattoService {
 	
 	public void deletePiatto(Long id) {
 		piattoRepository.deleteById(id);
+	}
+	
+	public void deletePiatti(Ingrediente i) {
+		List<Piatto> piatti = piattoRepository.findByIngredienti(i);
+		for(Piatto p: piatti)
+			this.deletePiatto(p.getId());
 	}
 }

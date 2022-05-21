@@ -61,18 +61,43 @@ public class CateringApplication implements CommandLineRunner {
 		buffR.save(b3);
 		
 		Ingrediente i1 = new Ingrediente();
-		i1.setNome("Pasta");
+		i1.setNome("Pasta - Spaghetti");
 		i1.setOrigine("Lazio");
 		i1.setDescrizione("Paese coltivazione grano: ITALIA");
 		
-		ingrR.save(i1);
+		Ingrediente i2 = new Ingrediente();
+		i2.setNome("Pasta - Mezze Maniche");
+		i2.setOrigine("Lazio");
+		i2.setDescrizione("Paese coltivazione grano: ITALIA");
 		
+		Ingrediente i3 = new Ingrediente();
+		i3.setNome("Pasta - Rigatoni");
+		i3.setOrigine("Lazio");
+		i3.setDescrizione("Paese coltivazione grano: ITALIA");
+		
+		Ingrediente i4 = new Ingrediente();
+		i4.setNome("Sugo");
+		i4.setOrigine("Marche");
+		i4.setDescrizione("Pomodori italiani");
+		
+		Ingrediente i5 = new Ingrediente();
+		i5.setNome("Pesto");
+		i5.setOrigine("Lompardia");
+		i5.setDescrizione("Pinoli italiani");
+		
+		ingrR.save(i1);
+		ingrR.save(i2);
+		ingrR.save(i3);
+		ingrR.save(i4);
+		ingrR.save(i5);
 		
 		Piatto p1 = new Piatto();
 		p1.setNome("Carbonara");
 		p1.setDescrizione("Buona");
 		p1.setBuffet(b1);
+		p1.addIngrediente(i5);
 		p1.addIngrediente(i1);
+		
 		piattR.save(p1);
 	}
 
