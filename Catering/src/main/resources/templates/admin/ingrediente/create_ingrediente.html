@@ -29,23 +29,36 @@
 				class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
 				<h1 class="text-center">Create New Ingrediente</h1>
 				<div class="card-body">
-					<form th:action="@{/administration/ingredienti}" th:object="${ingrediente}" method="POST">
+					<form th:action="@{/administration/ingredienti}"
+						th:object="${ingrediente}" method="POST" class="needs-validation"
+						novalidate>
 						<div class="form-group">
 							<label>Nome</label> <input type="text" name="nome"
 								th:field="*{nome}" class="form-control"
 								placeholder="Inserisci il nome" />
+							<div>
+								<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+							</div>
 						</div>
 
 						<div class="form-group">
 							<label>Origine</label> <input type="text" name="cognome"
 								th:field="*{origine}" class="form-control"
 								placeholder="Inserisci l'origine" />
+							<div>
+								<span th:if="${#fields.hasErrors('origine')}"
+									th:errors="*{origine}"></span>
+							</div>
 						</div>
 
 						<div class="form-group">
 							<label>Descrizione</label> <input type="text" name="nazionalita"
 								th:field="*{descrizione}" class="form-control"
 								placeholder="Inserisci la descrizione" />
+							<div>
+								<span th:if="${#fields.hasErrors('descrizione')}"
+									th:errors="*{descrizione}"></span>
+							</div>
 						</div>
 
 						<div class="box-footer">
@@ -58,8 +71,8 @@
 		</div>
 		<div class="row">
 			<div class="col-lg-3">
-				<a th:href="@{/administration/ingredienti}" class="btn btn-primary btn-sm mb-3">
-					Back</a>
+				<a th:href="@{/administration/ingredienti}"
+					class="btn btn-primary btn-sm mb-3"> Back</a>
 			</div>
 		</div>
 	</div>

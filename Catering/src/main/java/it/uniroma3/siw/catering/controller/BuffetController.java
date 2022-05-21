@@ -15,12 +15,14 @@ import it.uniroma3.siw.catering.model.Buffet;
 import it.uniroma3.siw.catering.model.Chef;
 import it.uniroma3.siw.catering.service.BuffetService;
 import it.uniroma3.siw.catering.service.ChefService;
+import it.uniroma3.siw.catering.validator.BuffetValidator;
 
 @Controller
 public class BuffetController {
 
 	@Autowired private BuffetService buffetService;
 	@Autowired private ChefService chefService;
+	@Autowired private BuffetValidator buffetValidator;
 
 	@GetMapping("/administration/buffets")
 	public String listBuffets(Model model) {
@@ -49,11 +51,12 @@ public class BuffetController {
 	
 	@PostMapping("/administration/buffets/{chef_id}")
 	public String addBuffet(@PathVariable Long chef_id, @Valid @ModelAttribute("buffet") Buffet buffet, BindingResult bindingResults, Model model) {
-		if(!bindingResults.hasErrors()) {			
+		this.buffetValidator.validate(buffet, bindingResults);
+		
+		if(!bindingResults.hasErrors()) {
 			Chef chef = chefService.findById(chef_id);
 			chef.addBuffet(buffet);
 			buffet.setChef(chef);
-			
 			buffetService.save(buffet);
 			model.addAttribute("buffet", model);
 			return "redirect:/administration/chefs";

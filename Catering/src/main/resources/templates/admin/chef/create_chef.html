@@ -29,23 +29,33 @@
 				class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
 				<h1 class="text-center">Create New Chef</h1>
 				<div class="card-body">
-					<form th:action="@{/administration/chefs}" th:object="${chef}" method="POST">
+					<form th:action="@{/administration/chefs}" th:object="${chef}"
+						method="POST" class="needs-validation" novalidate>
 						<div class="form-group">
-							<label>Nome</label> <input type="text" name="nome"
-								th:field="*{nome}" class="form-control"
+							<label>Nome</label> <input type="text"
+								name="nome" th:field="*{nome}" class="form-control"
 								placeholder="Inserisci il nome" />
+							<div>
+								<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+							</div>
 						</div>
 
 						<div class="form-group">
-							<label>Cognome</label> <input type="text" name="cognome"
-								th:field="*{cognome}" class="form-control"
-								placeholder="Inserisci il cognome" />
+							<label>Cognome</label> <input
+								type="text" name="cognome" th:field="*{cognome}"
+								class="form-control" placeholder="Inserisci il cognome" />
+							<div>
+								<span th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></span>
+							</div>
 						</div>
 
 						<div class="form-group">
-							<label>Nazionalita</label> <input type="text" name="nazionalita"
-								th:field="*{nazionalita}" class="form-control"
-								placeholder="Inserisci la nazionalita" />
+							<label>Nazionalita</label> <input
+								type="text" name="nazionalita" th:field="*{nazionalita}"
+								class="form-control" placeholder="Inserisci la nazionalita" />
+							<div>
+								<span th:if="${#fields.hasErrors('nazionalita')}" th:errors="*{nazionalita}"></span>
+							</div>
 						</div>
 
 						<div class="box-footer">
@@ -58,8 +68,8 @@
 		</div>
 		<div class="row">
 			<div class="col-lg-3">
-				<a th:href="@{/administration/chefs}" class="btn btn-primary btn-sm mb-3">
-					Back</a>
+				<a th:href="@{/administration/chefs}"
+					class="btn btn-primary btn-sm mb-3"> Back</a>
 			</div>
 		</div>
 	</div>

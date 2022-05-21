@@ -46,4 +46,8 @@ public class ChefService {
 		
 		chefRepository.deleteById(id);
 	}
+
+	public boolean alreadyExists(Chef chef) {
+		return chefRepository.existsByNomeAndCognome(chef.getNome(), chef.getCognome());
+	}
  }

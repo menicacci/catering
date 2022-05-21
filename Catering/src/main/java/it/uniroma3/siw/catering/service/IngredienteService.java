@@ -38,5 +38,10 @@ public class IngredienteService {
 		piattoService.deletePiatti(findById(id));
 		ingredienteRepository.deleteById(id);
 	}
+
+	public boolean alreadyExists(Ingrediente ingrediente) {
+		return ingredienteRepository.existsByNomeAndOrigine(ingrediente.getNome(), ingrediente.getOrigine());
+
+	}
 	
 }

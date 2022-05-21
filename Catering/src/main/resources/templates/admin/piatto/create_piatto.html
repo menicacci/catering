@@ -31,27 +31,38 @@
 				<div class="card-body">
 					<form
 						th:action="@{/administration/piatti/{buffet_id}(buffet_id=${buffet_id})}"
-						th:object="${piatto}" method="POST">
+						th:object="${piatto}" method="POST" class="needs-validation"
+						novalidate>
 						<div class="form-group">
 							<label>Nome</label> <input type="text" name="nome"
 								th:field="*{nome}" class="form-control"
 								placeholder="Inserisci il nome" />
+							<div>
+								<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+							</div>
 						</div>
 
 						<div class="form-group">
 							<label>Descrizione</label> <input type="text" name="descrizione"
 								th:field="*{descrizione}" class="form-control"
 								placeholder="Inserisci la descrizione" />
+							<div>
+								<span th:if="${#fields.hasErrors('descrizione')}"
+									th:errors="*{descrizione}"></span>
+							</div>
 						</div>
 						<div class="form-group">
 							<label>Ingredienti</label>
 							<div>
-								<select class="form-control" th:field="*{ingredienti}" multiple="multiple">
+								<select class="form-control" th:field="*{ingredienti}"
+									multiple="multiple">
 									<option th:each="ingrediente: ${tuttiGliIngredienti}"
-											th:value="${ingrediente.id}"
-											th:text="${ingrediente.nome}"											
-									>1</option>
+										th:value="${ingrediente.id}" th:text="${ingrediente.nome}">1</option>
 								</select>
+								<div>
+									<span th:if="${#fields.hasErrors('ingredienti')}"
+										th:errors="*{ingredienti}"></span>
+								</div>
 							</div>
 						</div>
 						<div class="box-footer">

@@ -16,6 +16,7 @@ import it.uniroma3.siw.catering.model.Piatto;
 import it.uniroma3.siw.catering.service.BuffetService;
 import it.uniroma3.siw.catering.service.IngredienteService;
 import it.uniroma3.siw.catering.service.PiattoService;
+import it.uniroma3.siw.catering.validator.PiattoValidator;
 
 @Controller
 public class PiattoController {
@@ -23,6 +24,7 @@ public class PiattoController {
 	@Autowired private PiattoService piattoService;
 	@Autowired private BuffetService buffetService;
 	@Autowired private IngredienteService ingredienteService;
+	@Autowired private PiattoValidator piattoValidator;
 	
 	@GetMapping("/administration/piatti")
 	public String listPiatti(Model model) {
@@ -51,18 +53,20 @@ public class PiattoController {
 	}
 
 	@PostMapping("/administration/piatti/{buffet_id}")
-	public String addPiatto(@PathVariable Long buffet_id, @Valid @ModelAttribute("ingrediente") Piatto piatto, BindingResult bindingResults, Model model) {
+	public String addPiatto(@PathVariable Long buffet_id, @Valid @ModelAttribute("piatto") Piatto piatto, BindingResult bindingResults, Model model) {
+		Buffet buffet = buffetService.findById(buffet_id);
+		buffet.addPiatto(piatto);
+		piatto.setBuffet(buffet);
+		this.piattoValidator.validate(piatto, bindingResults);
 		if(!bindingResults.hasErrors()) {
-			Buffet buffet = buffetService.findById(buffet_id);
-			buffet.addPiatto(piatto);
-			piatto.setBuffet(buffet);
-			
 			piattoService.save(piatto);
 			model.addAttribute("piatto", model);
 			return "redirect:/administration/buffets";
 		}
-		else
+		else {
+			model.addAttribute("tuttiGliIngredienti", ingredienteService.findAll());
 			return "admin/piatto/create_piatto.html";
+		}
 	}
 	
 	@GetMapping("/administration/piatti/del/{id}")

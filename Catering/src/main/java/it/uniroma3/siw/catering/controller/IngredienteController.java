@@ -15,12 +15,14 @@ import it.uniroma3.siw.catering.model.Ingrediente;
 import it.uniroma3.siw.catering.model.Piatto;
 import it.uniroma3.siw.catering.service.IngredienteService;
 import it.uniroma3.siw.catering.service.PiattoService;
+import it.uniroma3.siw.catering.validator.IngredienteValidator;
 
 @Controller
 public class IngredienteController {
 	
 	@Autowired private IngredienteService ingredienteService;
 	@Autowired private PiattoService piattoService;
+	@Autowired private IngredienteValidator ingredienteValidator;
 	
 	@GetMapping("/administration/ingredienti")
 	public String listBuffets(Model model) {
@@ -47,13 +49,14 @@ public class IngredienteController {
 
 	@PostMapping("/administration/ingredienti")
 	public String addIngrediente(@Valid @ModelAttribute("ingrediente") Ingrediente ingrediente, BindingResult bindingResults, Model model) {
+		this.ingredienteValidator.validate(ingrediente, bindingResults);
 		if(!bindingResults.hasErrors()) {
 			ingredienteService.save(ingrediente);
 			model.addAttribute("ingrediente", model);
 			return "redirect:/administration/ingredienti";
 		}
 		else
-			return "admin/piatto/create_ingrediente.html";
+			return "admin/ingrediente/create_ingrediente.html";
 	}
 	
 	@GetMapping("/administration/ingredienti/del/{id}")

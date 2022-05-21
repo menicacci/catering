@@ -51,4 +51,8 @@ public class BuffetService {
 		
 		this.buffetRepository.deleteById(id);
 	}
+
+	public boolean alreadyExists(Buffet buffet) {
+		return buffetRepository.existsByNomeAndChef(buffet.getNome(), buffet.getChef());
+	}
 }

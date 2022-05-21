@@ -53,4 +53,8 @@ public class PiattoService {
 		for(Piatto p: piatti)
 			this.deletePiatto(p.getId());
 	}
+
+	public boolean alredyExists(Piatto piatto) {
+		return this.piattoRepository.existsByNomeAndBuffet(piatto.getNome(), piatto.getBuffet());
+	}
 }

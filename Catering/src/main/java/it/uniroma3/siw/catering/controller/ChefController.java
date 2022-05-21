@@ -13,11 +13,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.siw.catering.model.Chef;
 import it.uniroma3.siw.catering.service.ChefService;
+import it.uniroma3.siw.catering.validator.ChefValidator;
 
 @Controller
 public class ChefController {
 
 	@Autowired private ChefService chefService;
+	@Autowired private ChefValidator chefValidator;
 
 	@GetMapping("/administration/chefs")
 	public String listChefs(Model model) {
@@ -34,13 +36,14 @@ public class ChefController {
 
 	@PostMapping("/administration/chefs")
 	public String addChef(@Valid @ModelAttribute("chef") Chef chef, BindingResult bindingResults, Model model) {
+		chefValidator.validate(chef, bindingResults);
 		if(!bindingResults.hasErrors()) {
 			chefService.save(chef);
 			model.addAttribute("chef", model);
 			return "redirect:/administration/chefs";
 		}
 		else
-			return "admin/buffet/create_chef.html";
+			return "admin/chef/create_chef.html";
 	}
 
 	@GetMapping("/administration/chefs/edit/{id}")
