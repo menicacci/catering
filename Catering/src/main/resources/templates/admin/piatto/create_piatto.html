@@ -33,6 +33,10 @@
 						th:action="@{/administration/piatti/{buffet_id}(buffet_id=${buffet_id})}"
 						th:object="${piatto}" method="POST" class="needs-validation"
 						novalidate>
+						<div th:if="${#fields.hasGlobalErrors()}">
+							<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">Errore
+								globale</p>
+						</div>
 						<div class="form-group">
 							<label>Nome</label> <input type="text" name="nome"
 								th:field="*{nome}" class="form-control"
@@ -54,15 +58,10 @@
 						<div class="form-group">
 							<label>Ingredienti</label>
 							<div>
-								<select class="form-control" th:field="*{ingredienti}"
-									multiple="multiple">
-									<option th:each="ingrediente: ${tuttiGliIngredienti}"
-										th:value="${ingrediente.id}" th:text="${ingrediente.nome}">1</option>
-								</select>
-								<div>
-									<span th:if="${#fields.hasErrors('ingredienti')}"
-										th:errors="*{ingredienti}"></span>
-								</div>
+								<th:block th:each="ingrediente: ${tuttiGliIngredienti}">
+									<input type="checkbox" th:field="*{ingredienti}"
+										th:text="${ingrediente.nome}" th:value="${ingrediente.id}">
+								</th:block>
 							</div>
 						</div>
 						<div class="box-footer">

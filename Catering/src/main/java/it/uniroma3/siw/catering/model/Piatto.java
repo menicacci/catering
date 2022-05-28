@@ -86,18 +86,4 @@ public class Piatto {
 	public void addIngrediente(Ingrediente i) {
 		this.getIngredienti().add(i);
 	}
-	
-//	public Ingrediente findIngrediente(Long ingredienteId) {
-//		List<Ingrediente> ingredienti = this.getIngredienti();
-//		for(Ingrediente i: ingredienti) {
-//			if(i.getId() == ingredienteId) {
-//				return i;
-//			}
-//		}
-//		return null;
-//	}
-//
-//	public void removeIngrediente(Long ingrediente_id) {
-//		this.getIngredienti().remove(this.findIngrediente(ingrediente_id));	
-//	}
 }

@@ -43,5 +43,4 @@ public class IngredienteService {
 		return ingredienteRepository.existsByNomeAndOrigine(ingrediente.getNome(), ingrediente.getOrigine());
 
 	}
-	
 }

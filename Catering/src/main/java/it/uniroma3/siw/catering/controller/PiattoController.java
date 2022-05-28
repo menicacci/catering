@@ -24,6 +24,7 @@ public class PiattoController {
 	@Autowired private PiattoService piattoService;
 	@Autowired private BuffetService buffetService;
 	@Autowired private IngredienteService ingredienteService;
+	
 	@Autowired private PiattoValidator piattoValidator;
 	
 	@GetMapping("/administration/piatti")

@@ -19,6 +19,7 @@ import it.uniroma3.siw.catering.validator.ChefValidator;
 public class ChefController {
 
 	@Autowired private ChefService chefService;
+	
 	@Autowired private ChefValidator chefValidator;
 
 	@GetMapping("/administration/chefs")

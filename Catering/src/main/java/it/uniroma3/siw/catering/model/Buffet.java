@@ -3,6 +3,7 @@ package it.uniroma3.siw.catering.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -27,7 +28,7 @@ public class Buffet {
 	@ManyToOne
 	private Chef chef;
 	
-	@OneToMany(mappedBy = "buffet", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "buffet", fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE})
 	private List<Piatto> piatti;
 	
 	public Buffet() {

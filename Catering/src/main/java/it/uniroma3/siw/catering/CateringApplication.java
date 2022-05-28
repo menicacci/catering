@@ -4,13 +4,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
+import it.uniroma3.siw.catering.model.Admin;
 import it.uniroma3.siw.catering.model.Buffet;
 import it.uniroma3.siw.catering.model.Chef;
+import it.uniroma3.siw.catering.model.Credentials;
 import it.uniroma3.siw.catering.model.Ingrediente;
 import it.uniroma3.siw.catering.model.Piatto;
 import it.uniroma3.siw.catering.repository.BuffetRepository;
 import it.uniroma3.siw.catering.repository.ChefRepository;
+import it.uniroma3.siw.catering.repository.CredentialsRepository;
 import it.uniroma3.siw.catering.repository.IngredienteRepository;
 import it.uniroma3.siw.catering.repository.PiattoRepository;
 
@@ -25,6 +29,9 @@ public class CateringApplication implements CommandLineRunner {
 	@Autowired private IngredienteRepository ingrR;
 	@Autowired private BuffetRepository buffR;
 	@Autowired private PiattoRepository piattR;
+	@Autowired private CredentialsRepository credR;
+	
+	@Autowired protected PasswordEncoder passwordEncoder;
 	
 	@Override
 	public void run(String... args) throws Exception {
@@ -104,6 +111,18 @@ public class CateringApplication implements CommandLineRunner {
 		p2.setBuffet(b2);
 		
 		piattR.save(p1);
+		
+		Admin u = new Admin();
+		u.setNome("Orso");
+		u.setCognome("Mengo");
+		
+		Credentials c = new Credentials();
+		c.setAdmin(u);
+		c.setPassword(this.passwordEncoder.encode("orso"));
+		c.setUsername("orso");
+		c.setRole("ADMIN");
+		
+		credR.save(c);	
 	}
 
 }

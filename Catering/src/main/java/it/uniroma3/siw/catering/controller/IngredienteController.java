@@ -22,6 +22,7 @@ public class IngredienteController {
 	
 	@Autowired private IngredienteService ingredienteService;
 	@Autowired private PiattoService piattoService;
+	
 	@Autowired private IngredienteValidator ingredienteValidator;
 	
 	@GetMapping("/administration/ingredienti")

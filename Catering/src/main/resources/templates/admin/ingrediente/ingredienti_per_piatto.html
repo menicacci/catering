@@ -33,7 +33,6 @@
 					<th>Nome</th>
 					<th>Origine</th>
 					<th>Descrizione</th>
-					<th>Operazione</th>
 				</tr>
 			</thead>
 
@@ -42,9 +41,6 @@
 					<td th:text="${ingrediente.nome}"></td>
 					<td th:text="${ingrediente.origine}"></td>
 					<td th:text="${ingrediente.descrizione}"></td>
-					<td> 
-						<a th:href="@{/administration/ingredienti/del/{id}(id=${ingrediente.id})}" class="btn btn-danger">Delete</a>
-					</td>
 				</tr>
 			</tbody>
 

@@ -22,6 +22,7 @@ public class BuffetController {
 
 	@Autowired private BuffetService buffetService;
 	@Autowired private ChefService chefService;
+	
 	@Autowired private BuffetValidator buffetValidator;
 
 	@GetMapping("/administration/buffets")
@@ -51,12 +52,12 @@ public class BuffetController {
 	
 	@PostMapping("/administration/buffets/{chef_id}")
 	public String addBuffet(@PathVariable Long chef_id, @Valid @ModelAttribute("buffet") Buffet buffet, BindingResult bindingResults, Model model) {
+		Chef chef = chefService.findById(chef_id);
+		chef.addBuffet(buffet);
+		buffet.setChef(chef);
 		this.buffetValidator.validate(buffet, bindingResults);
 		
 		if(!bindingResults.hasErrors()) {
-			Chef chef = chefService.findById(chef_id);
-			chef.addBuffet(buffet);
-			buffet.setChef(chef);
 			buffetService.save(buffet);
 			model.addAttribute("buffet", model);
 			return "redirect:/administration/chefs";

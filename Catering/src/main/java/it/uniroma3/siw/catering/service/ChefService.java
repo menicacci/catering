@@ -8,7 +8,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import it.uniroma3.siw.catering.model.Buffet;
 import it.uniroma3.siw.catering.model.Chef;
 import it.uniroma3.siw.catering.repository.ChefRepository;
 
@@ -16,7 +15,6 @@ import it.uniroma3.siw.catering.repository.ChefRepository;
 public class ChefService {
 
 	@Autowired private ChefRepository chefRepository;
-	@Autowired private BuffetService buffetService;
 	
 	@Transactional
 	public Chef save(Chef chef) {
@@ -40,10 +38,6 @@ public class ChefService {
 	}
 	
 	public void deleteChefById(Long id) {
-		List<Buffet> buffets = buffetService.findAllByChef(this.findById(id));
-		for(Buffet b: buffets)
-			buffetService.deleteBuffet(b.getId());
-		
 		chefRepository.deleteById(id);
 	}
 

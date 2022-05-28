@@ -1,0 +1,39 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Catering Service</title>
+<link rel="stylesheet" href="main_page.css" />
+<link rel="icon"
+	href="https://th.bing.com/th/id/OIP.EPT5ubvFjuQG60TeMX-66wHaFj?pid=ImgDet&rs=1">
+</head>
+<div class="header">
+	<div class="sides">
+		<a href="/index" class="contact">Home</a>
+	</div>
+	<div class="info">
+		<h3>
+			<a>Roma</a>
+		</h3>
+		<h1>Catering Service</h1>
+		<a class="logo"></a>
+	</div>
+</div>
+<section class="content">
+	<p align="center">Admin Login Page</p>
+	<form th:action="@{/login}" method="POST">
+	<div class="form">
+		<div class="form_item">
+			<input type="text" name="username" class="form-control"
+				placeholder="Inserisci username" required/>
+		</div>
+		<div class="form_item">
+			<input type="password" name="password" class="form-control"
+				placeholder="Inserisci password" required/>
+		</div>
+		<div class="form_item">
+			<button type="submit">Login</button>
+		</div>
+		</div>
+	</form>
+</section>
+</html>
