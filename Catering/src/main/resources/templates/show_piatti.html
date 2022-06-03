@@ -1,0 +1,46 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Catering Service</title>
+<link type="text/css" href="/css/main_page.css" rel="stylesheet">
+<link rel="icon"
+	href="https://th.bing.com/th/id/OIP.EPT5ubvFjuQG60TeMX-66wHaFj?pid=ImgDet&rs=1">
+</head>
+<div class="header">
+	<div class="sides">
+		<a href="/index" class="contact">Home</a> <a href="/our_chefs"
+			class="contact">Back</a>
+	</div>
+	<div class="info">
+		<h3>
+			<a>Roma</a>
+		</h3>
+		<h1>Catering Service</h1>
+		<a class="logo"></a>
+	</div>
+</div>
+<section class="content">
+	<p align="center" th:text="'I piatti del buffet ' + ${buffet.nome}">Buffet</p>
+	<ul>
+		<li th:each="piatto : ${buffet.piatti}">
+			<div>
+				<p th:text="${piatto.nome} + ' con:'">Piatto</p>
+			</div>
+			<ul>
+				<li th:each="ingrediente : ${piatto.ingredienti}">
+					<div class="buffets">
+						<a th:text="${ingrediente.nome} + ', Origine: ' + ${ingrediente.origine}">Ingrediente</a>
+					</div>
+					<div class="ingrediente">
+						<a th:text="${ingrediente.descrizione}">Ingrediente</a>
+					</div>
+
+				</li>
+			</ul>
+			<div>
+				<p th:text="'Descrizione dello Chef: ' + ${piatto.descrizione}">Piatto</p>
+			</div>
+		</li>
+	</ul>
+</section>
+</html>

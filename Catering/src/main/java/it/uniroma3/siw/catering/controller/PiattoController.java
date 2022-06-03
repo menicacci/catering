@@ -75,4 +75,11 @@ public class PiattoController {
 		piattoService.deletePiatto(id);
 		return "redirect:/administration/piatti";
 	}
+	
+	@GetMapping("/show_piatti/{id}")
+	public String showPiatti(@PathVariable Long id, Model model) {
+		model.addAttribute("buffet", buffetService.findById(id));
+		
+		return "show_piatti.html";
+	}
 }

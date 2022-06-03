@@ -2,7 +2,7 @@
 <head>
 <meta charset="utf-8" />
 <title>Catering Service</title>
-<link rel="stylesheet" href="main_page.css" />
+<link rel="stylesheet" href="css/main_page.css" />
 <link rel="icon"
 	href="https://th.bing.com/th/id/OIP.EPT5ubvFjuQG60TeMX-66wHaFj?pid=ImgDet&rs=1">
 </head>
@@ -27,24 +27,11 @@
 				Rossi, Italia</p>
 			<ul>
 				<li th:each="buffet : ${chef.buffet}">
-					<div class="buffet">
-						<a th:text="${buffet.nome}">Comunione</a>
+					<div class="buffets">
+						<a th:text="${buffet.nome} + ', '" th:href="@{/show_piatti/{id}(id=${buffet.id})}">Comunione</a>
+						<a th:text="${buffet.descrizione}">Descrizione</a>
 					</div>
-					<ul>
-						<li th:each="piatto : ${buffet.piatti}">
-							<div class="piatto">
-								<a th:text="${piatto.nome} + ' con:'">Piatto</a>
-							</div>
-							<ul>
-								<li th:each="ingrediente : ${piatto.ingredienti}">
-									<div class="ingrediente">
-										<a th:text="${ingrediente.nome}">Ingrediente</a>
-									</div>
-
-								</li>
-							</ul>
-						</li>
-					</ul>
+					
 				</li>
 			</ul>
 		</li>
