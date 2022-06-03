@@ -59,9 +59,15 @@
 							<label>Ingredienti</label>
 							<div>
 								<th:block th:each="ingrediente: ${tuttiGliIngredienti}">
-									<input type="checkbox" th:field="*{ingredienti}"
-										th:text="${ingrediente.nome}" th:value="${ingrediente.id}">
+									<input 	type="checkbox" 
+											th:field="*{ingredienti}"
+											th:text="${ingrediente.nome}" 
+											th:value="${ingrediente.id}">
 								</th:block>
+							</div>
+							<div>
+								<span th:if="${#fields.hasErrors('ingredienti')}"
+									th:errors="*{ingredienti}"></span>
 							</div>
 						</div>
 						<div class="box-footer">
