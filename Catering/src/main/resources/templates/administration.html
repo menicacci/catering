@@ -11,12 +11,10 @@
 <body>
 	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
 		<a class="navbar-brand" href="#">Catering Management System</a>
-
-		<button class="navbar-toggler" type="button" data-toggle="collapse"
-			data-target="#collapsibleNavbar">
-			<span class="navbar-toggler-icon"></span>
-		</button>
 	</nav>
+	<nav class="navbar navbar-expand-md bg-light navbar-dark">
+		<a class="navbar-brand" th:text="'Ciao, ' + ${admin.nome}">Catering Management System</a>
+	</nav>	
 	<div>
 		<ul class="list-group">
 			<li class="list-group-item"><a href="/administration/chefs">Chef Management</a></li>

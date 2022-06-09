@@ -21,6 +21,9 @@ import it.uniroma3.siw.catering.service.CredentialsService;
 public class IndexController {
 	
 	@Autowired private CredentialsService credentialsService;
+	
+//	@Autowired private AdminValidator adminValidator;
+//	@Autowired private CredentialsValidator credentialsValidator;
 
 	@RequestMapping(value = {"/", "index"}, method = RequestMethod.GET)
 	public String index(Model model) {
@@ -31,7 +34,8 @@ public class IndexController {
 	public String getAdminPage(Model model) {
 		UserDetails userDetails = (UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		Credentials credentials = credentialsService.getCredentials(userDetails.getUsername());
-		if (credentials.getRole().equals(Credentials.ADMIN_ROLE)) {
+		if (credentials.getRole().equals(Credentials.DEFAULT_ROLE)) {
+			model.addAttribute("admin", credentials.getAdmin());
 			return "administration.html";
 		}
 
@@ -42,6 +46,16 @@ public class IndexController {
 	public String getAdminLogin(Model model) {
 		return "adminLogin";
 	}
+	
+	/* Not needed
+	@GetMapping("/register")
+	public String getAdminRegister(Model model) {
+		model.addAttribute("admin", new Admin());
+		model.addAttribute("credentials", new Credentials());
+		
+		return "adminRegister";
+	}
+	*/
 
 	@RequestMapping(value = {"/logout"}, method = RequestMethod.GET) 
 	public String logout(HttpServletRequest request, HttpServletResponse response) {
@@ -57,4 +71,29 @@ public class IndexController {
 	public String loginAdmin(Model model) {
 		return "redirect:/administration";
 	}
+	
+	/* Not needed
+	@RequestMapping(value = { "/register" }, method = RequestMethod.POST)
+    public String registerUser(@ModelAttribute("admin") Admin admin,
+                 BindingResult bindingResult,
+                 @ModelAttribute("credentials") Credentials credentials,
+                 BindingResult credentialsBindingResult,
+                 Model model) {
+
+        // validate user and credentials fields
+        this.adminValidator.validate(admin, bindingResult);
+        this.credentialsValidator.validate(credentials, credentialsBindingResult);
+
+        // if neither of them had invalid contents, store the User and the Credentials into the DB
+        if(!bindingResult.hasErrors() && ! credentialsBindingResult.hasErrors()) {
+            // set the user and store the credentials;
+            // this also stores the User, thanks to Cascade.ALL policy
+        	credentials.setRole("ADMIN");
+            credentials.setAdmin(admin);
+            credentialsService.saveCredentials(credentials);
+            return "index";
+        }
+        return "adminRegister";
+    }
+    */
 }
