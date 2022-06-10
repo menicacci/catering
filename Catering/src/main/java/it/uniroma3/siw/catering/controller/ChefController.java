@@ -56,6 +56,7 @@ public class ChefController {
 	@PostMapping("/administration/chefs/{id}")
 	public String updateChef(@PathVariable Long id, @Valid @ModelAttribute("chef") Chef chef, 
 			BindingResult bindingResults, Model model) {
+		chefValidator.validate(chef, bindingResults);
 		if(!bindingResults.hasErrors()) {
 			Chef oldChef = chefService.findById(id);
 			oldChef.setId(chef.getId());
@@ -64,7 +65,7 @@ public class ChefController {
 			oldChef.setNazionalita(chef.getNazionalita());
 
 			chefService.updateChef(oldChef);
-			model.addAttribute("chef", model);
+			model.addAttribute("chef", chef);
 			return "redirect:/administration/chefs";
 		}
 		else
