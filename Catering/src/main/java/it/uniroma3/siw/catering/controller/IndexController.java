@@ -47,7 +47,7 @@ public class IndexController {
 		return "adminLogin";
 	}
 	
-	/* Not needed
+	/*
 	@GetMapping("/register")
 	public String getAdminRegister(Model model) {
 		model.addAttribute("admin", new Admin());
@@ -72,7 +72,7 @@ public class IndexController {
 		return "redirect:/administration";
 	}
 	
-	/* Not needed
+	/*
 	@RequestMapping(value = { "/register" }, method = RequestMethod.POST)
     public String registerUser(@ModelAttribute("admin") Admin admin,
                  BindingResult bindingResult,
@@ -93,7 +93,8 @@ public class IndexController {
             credentialsService.saveCredentials(credentials);
             return "index";
         }
-        return "adminRegister";
+        return "adminRegister.html";
     }
     */
+    
 }
