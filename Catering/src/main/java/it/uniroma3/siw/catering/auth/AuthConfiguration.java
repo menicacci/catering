@@ -24,8 +24,8 @@ public class AuthConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
     	http        
     			.authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/", "/index", "/our_chefs", "/show_piatti/**", "/login",  "/css/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/login").permitAll()
+                .antMatchers(HttpMethod.GET, "/", "/index", "/our_chefs", "/show_piatti/**", "/login", "/register", "/css/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/login", "/register").permitAll()
                                 
                 .antMatchers(HttpMethod.GET, "/administration/**").hasAnyAuthority("ADMIN")
                 .antMatchers(HttpMethod.POST, "/administration/**").hasAnyAuthority("ADMIN") 
