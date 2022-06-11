@@ -9,9 +9,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,16 +17,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import it.uniroma3.siw.catering.model.Admin;
 import it.uniroma3.siw.catering.model.Credentials;
 import it.uniroma3.siw.catering.service.CredentialsService;
-import it.uniroma3.siw.catering.validator.AdminValidator;
-import it.uniroma3.siw.catering.validator.CredentialsValidator;
 
 @Controller
 public class IndexController {
 	
 	@Autowired private CredentialsService credentialsService;
 	
-	@Autowired private AdminValidator adminValidator;
-	@Autowired private CredentialsValidator credentialsValidator;
+//	@Autowired private AdminValidator adminValidator;
+//	@Autowired private CredentialsValidator credentialsValidator;
 
 	@RequestMapping(value = {"/", "index"}, method = RequestMethod.GET)
 	public String index(Model model) {
@@ -77,7 +73,7 @@ public class IndexController {
 		return "redirect:/administration";
 	}
 	
-	
+	/*
 	@RequestMapping(value = { "/register" }, method = RequestMethod.POST)
     public String registerUser(@ModelAttribute("admin") Admin admin,
                  BindingResult bindingResult,
@@ -101,5 +97,5 @@ public class IndexController {
         return "adminRegister.html";
     }
     
-    
+    */
 }
