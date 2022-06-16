@@ -19,6 +19,7 @@ public class Ingrediente {
 	@NotBlank
 	private String origine;
 	
+	@NotBlank
 	private String descrizione;
 	
 	public Ingrediente() {

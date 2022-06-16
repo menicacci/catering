@@ -86,4 +86,8 @@ public class Piatto {
 	public void addIngrediente(Ingrediente i) {
 		this.getIngredienti().add(i);
 	}
+
+	public void removeIngrediente(Ingrediente ingrediente) {
+		this.getIngredienti().remove(ingrediente);		
+	}
 }

@@ -6,6 +6,6 @@ import it.uniroma3.siw.catering.model.Ingrediente;
 
 public interface IngredienteRepository extends CrudRepository<Ingrediente,Long> {
 
-	public boolean existsByNomeAndOrigine(String nome, String origine);
+	public boolean existsByNomeAndOrigineAndDescrizione(String nome, String origine, String desc);
 	
 }

@@ -33,6 +33,7 @@
 					<th>Nome</th>
 					<th>Origine</th>
 					<th>Descrizione</th>
+					<th>Operazione</th>
 				</tr>
 			</thead>
 
@@ -41,6 +42,10 @@
 					<td th:text="${ingrediente.nome}"></td>
 					<td th:text="${ingrediente.origine}"></td>
 					<td th:text="${ingrediente.descrizione}"></td>
+					<td>
+						<a th:href="@{/administration/ingredienti/piatto/remove/{id_p}/{id_i}(id_p=${piatto_id},id_i=${ingrediente.id})}"
+						class="btn btn-danger">Remove from Piatto</a>
+					</td>
 				</tr>
 			</tbody>
 
@@ -48,8 +53,10 @@
 		
 		<div class="row">
 			<div class="col-lg-3">
-				<a th:href="@{/administration}" class="btn btn-primary btn-sm mb-3">
-					Back</a>
+				<a th:href="@{/administration/piatti}" class="btn btn-primary btn-sm mb-3">
+					Back to Piatti</a>
+					<a th:href="@{/administration/piatti/back/{id}(id=${piatto_id})}" class="btn btn-primary btn-sm mb-3">
+					Back to Buffet del Piatto</a>
 			</div>
 		</div>
 

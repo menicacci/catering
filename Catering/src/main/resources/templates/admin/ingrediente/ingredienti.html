@@ -30,6 +30,8 @@
 
 		<div class="row">
 			<div class="col-lg-3">
+				<a th:href="@{/administration}" class="btn btn-primary btn-sm mb-3">
+					Back</a>
 				<a th:href="@{/administration/ingredienti/new}" class="btn btn-primary btn-sm mb-3">Add Ingrediente</a>
 			</div>
 		</div>
@@ -50,19 +52,12 @@
 					<td th:text="${ingrediente.descrizione}"></td>
 					<td> 
 						<a th:href="@{/administration/ingredienti/del/{id}(id=${ingrediente.id})}" class="btn btn-danger">Delete</a>
+						<a th:href="@{/administration/ingredienti/update/{id}(id=${ingrediente.id})}" class="btn btn-secondary">Update</a>
 					</td>
 				</tr>
 			</tbody>
 
 		</table>
-		
-		<div class="row">
-			<div class="col-lg-3">
-				<a th:href="@{/administration}" class="btn btn-primary btn-sm mb-3">
-					Back</a>
-			</div>
-		</div>
-
 	</div>
 </body>
 </html>

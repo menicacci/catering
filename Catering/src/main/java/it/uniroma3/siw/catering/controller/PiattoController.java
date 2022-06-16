@@ -82,4 +82,18 @@ public class PiattoController {
 		
 		return "show_piatti.html";
 	}
+	
+	@GetMapping("/our_piatti")
+	public String ourPiatti(Model model) {
+		model.addAttribute("piatti", piattoService.findAll());
+		
+		return "our_piatti.html";
+	}
+	
+	@GetMapping("/administration/piatti/back/{id}")
+	public String backToPiatto(@PathVariable Long id, Model model) {
+		Piatto piatto = this.piattoService.findById(id);
+		
+		return "redirect:/administration/piatti/buffet/" + piatto.getBuffet().getId().toString();
+	}
 }

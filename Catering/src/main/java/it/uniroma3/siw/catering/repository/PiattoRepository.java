@@ -16,4 +16,5 @@ public interface PiattoRepository extends CrudRepository<Piatto,Long> {
 
 	public boolean existsByNomeAndBuffet(String nome, Buffet buffet);
 
+	
 }

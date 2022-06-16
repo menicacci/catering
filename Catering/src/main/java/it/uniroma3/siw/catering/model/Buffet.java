@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,7 +27,7 @@ public class Buffet {
 	@ManyToOne
 	private Chef chef;
 	
-	@OneToMany(mappedBy = "buffet", fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE})
+	@OneToMany(mappedBy = "buffet", cascade = {CascadeType.REMOVE})
 	private List<Piatto> piatti;
 	
 	public Buffet() {

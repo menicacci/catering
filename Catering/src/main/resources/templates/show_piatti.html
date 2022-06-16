@@ -8,8 +8,9 @@
 </head>
 <div class="header">
 	<div class="sides">
-		<a href="/index" class="contact">Home</a> <a href="/our_chefs"
-			class="contact">Back</a>
+		<a href="/index" class="contact">Home</a> 
+		<a href="/our_chefs"  class="contact">Chefs</a>
+		<a href="/our_piatti" class="contact">Piatti</a>
 	</div>
 	<div class="info">
 		<h3>
@@ -19,7 +20,7 @@
 		<a class="logo"></a>
 	</div>
 </div>
-<section class="content">
+<section class="content_pres">
 	<p align="center" th:text="'I piatti del buffet ' + ${buffet.nome}">Buffet</p>
 	<ul>
 		<li th:each="piatto : ${buffet.piatti}">

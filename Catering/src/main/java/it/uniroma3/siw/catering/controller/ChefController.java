@@ -65,7 +65,7 @@ public class ChefController {
 			oldChef.setNazionalita(chef.getNazionalita());
 
 			chefService.updateChef(oldChef);
-			model.addAttribute("chef", chef);
+			model.addAttribute("chef", oldChef);
 			return "redirect:/administration/chefs";
 		}
 		else

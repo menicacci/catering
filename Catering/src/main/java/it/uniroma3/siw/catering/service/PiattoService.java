@@ -57,4 +57,30 @@ public class PiattoService {
 	public boolean alredyExists(Piatto piatto) {
 		return this.piattoRepository.existsByNomeAndBuffet(piatto.getNome(), piatto.getBuffet());
 	}
+
+	public List<Piatto> findAllByIngrediente(Ingrediente ingrediente) {
+		return this.piattoRepository.findByIngredienti(ingrediente);
+	}
+
+	public void removeIngredienteFromPiatto(List<Piatto> piattiConIngrediente, Ingrediente ingrediente) {
+		for(Piatto p: piattiConIngrediente) {
+			p.removeIngrediente(ingrediente);
+		}
+	}
+
+	public void addIngrediente(Long id_p, Ingrediente ingrediente) {
+		Piatto piatto = this.findById(id_p);
+		
+		piatto.addIngrediente(ingrediente);
+		this.save(piatto);
+	}
+
+	public void removeIngredienteFromPiatto(Long id_p, Ingrediente ingrediente) {
+		Piatto piatto = this.findById(id_p);
+		piatto.removeIngrediente(ingrediente);
+		this.save(piatto);
+	}
+
+	
+
 }

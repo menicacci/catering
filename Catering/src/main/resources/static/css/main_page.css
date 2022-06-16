@@ -41,7 +41,7 @@ a{
     -webkit-backface-visibility: hidden;
     -webkit-transform: translateZ(0); backface-visibility: hidden;
   transform: translateZ(0);
-  background:#1B2030 url(https://media-cdn.tripadvisor.com/media/photo-s/1b/31/ec/37/k-e-catering-services.jpg) 50% 0 no-repeat;
+  background:#1B2030 url(https://www.guidingtech.com/wp-content/uploads/HD-Mouth-Watering-Food-Wallpapers-for-Desktop-10_4d470f76dc99e18ad75087b1b8410ea9.jpg) 50% 0 no-repeat;
   background-size:100%;
   background-attachment:fixed;
   animation: grow 360s  linear 10ms infinite;
@@ -78,7 +78,7 @@ a{
   text-shadow:0 2px 3px rgba(0,0,0,0.2);
 }
 
-.logo{
+.logo {
   display:inline-block;
   width:5em;
   height:5em;
@@ -87,6 +87,8 @@ a{
   background-size:cover;
   box-shadow:0 2px 3px rgba(0,0,0,0.3);
 }
+
+
 .info h1{
   font-size:4em
 }
@@ -98,8 +100,16 @@ a{
   0% { transform: scale(1) translateY(0px)}
   50% { transform: scale(1.2) translateY(-400px)}
 }
-.content_pres, .content {  
+.content_pres {  
   padding:5% 10%;
+  
+}
+
+.content {
+	padding-top:0%;
+	padding-left: 10%;
+	padding-right: 10%;
+	padding-bottom: 0%
 }
 
 p{
@@ -146,6 +156,16 @@ p{
   text-align:center;
 }
 
-.form_item {
-	padding: 0.5em
+.login {
+	padding: 2.5em
+}
+
+#mappa {
+  text-align: center;
+    padding: 4%;
+}
+
+iframe {
+  height: 22em;
+    width: 85%;
 }

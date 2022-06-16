@@ -17,7 +17,7 @@
 		</button>
 		<div class="collapse navbar-collapse" id="collapsibleNavbar">
 			<ul class="navbar-nav">
-				<li class="nav-item"><a class="nav-link">Chef Management</a></li>
+				<li class="nav-item">Buffet Management</li>
 			</ul>
 		</div>
 	</nav>
@@ -27,15 +27,16 @@
 		<div class="row">
 			<div
 				class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
-				<h1 class="text-center">Update Chef</h1>
+				<h1 class="text-center">Create New Buffet</h1>
 				<div class="card-body">
-					<form th:action="@{/administration/chefs/{id}(id=${chef.id})}"
-						th:object="${chef}" method="POST" class="needs-validation"
+					<form
+						th:action="@{/administration/buffet/{id}(id=${buffet.id})}"
+						th:object="${buffet}" method="POST" class="needs-validation"
 						novalidate>
 						<div th:if="${#fields.hasGlobalErrors()}">
-							<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">Errore
-								globale</p>
-						</div>
+						<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">Errore
+							globale</p>
+					</div>
 						<div class="form-group">
 							<label>Nome</label> <input type="text" name="nome"
 								th:field="*{nome}" class="form-control"
@@ -46,23 +47,14 @@
 						</div>
 
 						<div class="form-group">
-							<label>Cognome</label> <input type="text" name="cognome"
-								th:field="*{cognome}" class="form-control"
-								placeholder="Inserisci il cognome" />
-								<div>
-								<span th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></span>
+							<label>Descrizione</label> <input type="text" name="descrizione"
+								th:field="*{descrizione}" class="form-control"
+								placeholder="Inserisci la descrizione" />
+							<div>
+								<span th:if="${#fields.hasErrors('descrizione')}"
+									th:errors="*{descrizione}"></span>
 							</div>
 						</div>
-
-						<div class="form-group">
-							<label>Nazionalita</label> <input type="text" name="nazionalita"
-								th:field="*{nazionalita}" class="form-control"
-								placeholder="Inserisci la nazionalita" />
-								<div>
-								<span th:if="${#fields.hasErrors('nazionalita')}" th:errors="*{nazionalita}"></span>
-							</div>
-						</div>
-
 						<div class="box-footer">
 							<button type="submit" class="btn btn-primary">Invia</button>
 						</div>
